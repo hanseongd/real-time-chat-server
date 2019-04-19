@@ -39,14 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # pip modules
-    'debug_toolbar',
-    'django_extensions',
     'channels',
 
     # project app
     'chat',
 
 ]
+
+if DEBUG:
+    INSTALLED_APPS += [
+        'debug_toolbar',
+        'django_extensions',
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -15,7 +15,7 @@ def index(request):
 def room(request, room_name):
     messages = list(Message.objects.filter(room__name=room_name).extra(
         select={'created_at': 'DATETIME(created_at)'}
-    ).values('message', 'created_at'))
+    ).values('message', 'created_at').order_by('created_at'))
 
     return render(request, 'chat/room.html', {
         'room_name': json.dumps(room_name),
